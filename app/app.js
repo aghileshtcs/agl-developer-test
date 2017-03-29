@@ -7,18 +7,18 @@
 var petApp = angular.module('petInfo', []);
 
 //API URL constant
-petApp.constant('API_URL', 'http://agl-developer-test.azurewebsites.net/people.json');
+petApp.constant('API_URL', 'http://agl-developer-test.azurewebsites.net/people.json?callback=JSON_CALLBACK');
 
 //Angular controller definition
 petApp.controller('PetInfoController', function PetInfoController($http, petService) {
     var _this = this;
-   _this.petsData = {};
+    _this.petsData = {};
 
     //Get and process pet information
     _this.loadPetDetails = function loadPetDetails() {
-        petService.getPets().then(function (response) {
-            if (response.data && Array.isArray(response.data) && response.data.length) {
-                response.data.forEach(function (owner) {
+        petService.getPets().success(function (response) {
+            if (response && Array.isArray(response) && response.length) {
+                response.forEach(function (owner) {
                     if (Array.isArray(owner.pets) && owner.pets.length) {
                         if (owner.gender) {
                             if (!_this.petsData[owner.gender]) {
@@ -51,7 +51,7 @@ petApp.controller('PetInfoController', function PetInfoController($http, petServ
 petApp.factory('petService', function petService($http, API_URL) {
     return {
         getPets: function () {
-            return $http.get(API_URL);
+            return $http.jsonp(API_URL);
         }
     }
 });
