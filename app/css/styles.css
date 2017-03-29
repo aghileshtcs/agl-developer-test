@@ -1,0 +1,38 @@
+body {
+    background: #e8e8e8;
+    margin: 0;
+}
+
+h1 {
+    color: white;
+    background: #353535;
+    padding: 20px;
+    margin: 0;
+}
+
+h2 {
+    margin: 0;
+    padding: 20px;
+}
+ul{
+    padding: 0;
+}
+li.pet{
+    padding: 0 0 10px 100px;
+}
+ul,
+li {
+    list-style: none;
+    font-size: larger;
+    margin: 0;
+}
+
+.gender:nth-child(odd) {
+    background: linear-gradient(to right, #3d7d88, #6bd9ec);
+    color: white;
+}
+
+.gender:nth-child(even) {
+    background: linear-gradient(to right, #34186b, #ad85fb);
+    color: white;
+}

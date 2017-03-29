@@ -1,0 +1,22 @@
+<html>
+
+<head>
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
+</head>
+
+<body class="bg-body" ng-app="petInfo" ng-controller="PetInfoController as petCtrl">
+    <h1 class="bg-info">Pets : Cats ordered under owner gender</h1>
+    <ul>
+        <li class="gender" ng-repeat="(gender,pets) in petCtrl.petsData">
+            <h2>{{gender}}</h2>
+            <ul>
+                <li class="pet" ng-repeat="pet in pets|orderBy:'name'" ng-bind="pet.name"></li>
+            </ul>
+        </li>
+    </ul>
+
+</body>
+
+</html>
